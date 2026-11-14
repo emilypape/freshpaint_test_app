@@ -1,0 +1,175 @@
+/* ===== Theme colors ===== */
+:root {
+  --bg: #f6f7fb;
+  --card: #fff;
+  --ink: #1d2433;
+  --muted: #6b7280;
+  --accent: #4f46e5;
+  --ok: #059669;
+  --warn: #b45309;
+}
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* ===== Header ===== */
+header {
+  background: var(--ink);
+  color: #fff;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+#status {
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #374151;
+}
+
+#status.ok {
+  background: var(--ok);
+}
+
+#status.bad {
+  background: var(--warn);
+}
+
+/* ===== Layout ===== */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); /* keep columns equal even with long log lines */
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+section {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+p.hint {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ===== Products ===== */
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.product {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.product .emoji {
+  font-size: 32px;
+}
+
+.product .price {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 4px 0 8px;
+}
+
+/* ===== Buttons ===== */
+button {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+button.secondary {
+  background: #e0e7ff;
+  color: var(--accent);
+}
+
+/* ===== Forms ===== */
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+input,
+select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  flex: 1;
+  min-width: 140px;
+}
+
+label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ===== Cart ===== */
+#cart {
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+/* ===== Event log ===== */
+#logBody {
+  background: #0f172a;
+  color: #d1fae5;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  border-radius: 8px;
+  padding: 12px;
+  height: 170px;
+  overflow: auto;
+  white-space: pre; /* one line per event; scroll sideways for long ones */
+}

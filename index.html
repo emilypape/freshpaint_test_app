@@ -5,40 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Freshpaint Test Shop</title>
 
-  <!-- =====================================================================
-       PASTE YOUR FRESHPAINT SNIPPET BELOW
-       Freshpaint app → Settings (or onboarding "Install") → copy the
-       JavaScript snippet. It ends with freshpaint.init("YOUR-ENV-ID");
-       and freshpaint.page();  Replace this whole comment block with it.
-       ===================================================================== -->
+  <!-- Freshpaint SDK (from Freshpaint app → Sources → Web) -->
+  <script type="text/javascript">
+    (function(){function p(r,e){(e==null||e>r.length)&&(e=r.length);for(var t=0,a=new Array(e);t<e;t++)a[t]=r[t];return a}function v(r){if(Array.isArray(r))return p(r)}function h(r){if(typeof Symbol!="undefined"&&r[Symbol.iterator]!=null||r["@@iterator"]!=null)return Array.from(r)}function A(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function I(r,e){if(r){if(typeof r=="string")return p(r,e);var t=Object.prototype.toString.call(r).slice(8,-1);if(t==="Object"&&r.constructor&&(t=r.constructor.name),t==="Map"||t==="Set")return Array.from(t);if(t==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t))return p(r,e)}}function y(r){return v(r)||h(r)||I(r)||A()}var E=function(r,e){if(!e.__SV){try{var t,a,m=window.location,c=m.hash,x=function(n,o){return t=n.match(new RegExp(o+"=([^&]*)")),t?t[1]:null};c&&x(c,"fpState")&&(a=JSON.parse(decodeURIComponent(x(c,"fpState"))),a.action==="fpeditor"&&(window.sessionStorage.setItem("_fpcehash",c),history.replaceState(a.desiredHash||"",r.title,m.pathname+m.search)))}catch(S){}e.__loaded=!1,e.config=!1,e.__SV=2,window.freshpaint=new Proxy(e,{get:function(n,o){return n[o]!==void 0?n[o]:o==="init"?function(l,u,i){var _,d;(_=n)[d="_i"]||(_[d]=[]),n._i.push([l,u||{},i||"freshpaint"])}:function(){for(var l=arguments.length,u=new Array(l),i=0;i<l;i++)u[i]=arguments[i];var _=[o].concat(y(u));return n.push(_),new Proxy(_,{get:function(f,w){return f[w]?f[w]:function(){for(var b=arguments.length,g=new Array(b),s=0;s<b;s++)g[s]=arguments[s];f.length=0,f.push([o].concat(y(u))),f.push([w].concat(y(g)))}}})}}})}};E(document,window.freshpaint||[]);})();
+    freshpaint.init("b9e34532-33f0-4a5a-9504-9a886e13ffc4");
+    freshpaint.page();
+  </script>
+  <script src="https://freshpaint-cdn.com/js/b9e34532-33f0-4a5a-9504-9a886e13ffc4/freshpaint.js"></script>
 
-  <style>
-    :root { --bg:#f6f7fb; --card:#fff; --ink:#1d2433; --muted:#6b7280; --accent:#4f46e5; --ok:#059669; --warn:#b45309; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, sans-serif; background:var(--bg); color:var(--ink); }
-    header { background:var(--ink); color:#fff; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
-    header h1 { margin:0; font-size:20px; }
-    #status { font-size:13px; padding:4px 10px; border-radius:999px; background:#374151; }
-    #status.ok { background:var(--ok); } #status.bad { background:var(--warn); }
-    main { max-width:1100px; margin:0 auto; padding:24px 16px; display:grid; grid-template-columns: 1fr 1fr; gap:20px; }
-    @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
-    section { background:var(--card); border-radius:12px; padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
-    h2 { margin:0 0 4px; font-size:16px; }
-    p.hint { margin:0 0 14px; color:var(--muted); font-size:13px; }
-    .products { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-    .product { border:1px solid #e5e7eb; border-radius:10px; padding:12px; text-align:center; }
-    .product .emoji { font-size:32px; }
-    .product .price { color:var(--muted); font-size:13px; margin:4px 0 8px; }
-    button { background:var(--accent); color:#fff; border:0; border-radius:8px; padding:8px 12px; font-size:13px; cursor:pointer; }
-    button:hover { filter:brightness(1.1); }
-    button.secondary { background:#e0e7ff; color:var(--accent); }
-    .row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; align-items:center; }
-    input, select { padding:8px 10px; border:1px solid #d1d5db; border-radius:8px; font-size:13px; flex:1; min-width:140px; }
-    #cart { font-size:13px; margin:10px 0; }
-    #log { grid-column: 1 / -1; }
-    #logBody { background:#0f172a; color:#d1fae5; font-family: ui-monospace, Menlo, monospace; font-size:12px; border-radius:8px; padding:12px; height:260px; overflow:auto; white-space:pre-wrap; }
-    label { font-size:13px; color:var(--muted); }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -96,18 +71,6 @@
       <div class="row">
         <button class="secondary" onclick="aliasEmailToUserId()">alias(user_id, email)</button>
         <button class="secondary" onclick="resetUser()">reset() / log out</button>
-      </div>
-    </section>
-
-    <!-- 4. Custom event -->
-    <section>
-      <h2>Custom event</h2>
-      <p class="hint">Send any event name with JSON properties.</p>
-      <div class="row"><input id="customName" placeholder="event name" value="sign_up" /></div>
-      <div class="row"><input id="customProps" placeholder='{"method":"email"}' value='{"method":"email"}' /></div>
-      <div class="row">
-        <button onclick="customEvent()">Send event</button>
-        <button class="secondary" onclick="pageview()">Send page()</button>
       </div>
     </section>
 
@@ -205,15 +168,6 @@
       call("alias", userId, email);
     }
     function resetUser() { call("reset"); }
-
-    // ---------- custom ----------
-    function customEvent() {
-      let props = {};
-      try { props = JSON.parse(document.getElementById("customProps").value || "{}"); }
-      catch { alert("Properties must be valid JSON"); return; }
-      call("track", document.getElementById("customName").value.trim(), props);
-    }
-    function pageview() { call("page"); }
 
     // ---------- status ----------
     renderProducts();
